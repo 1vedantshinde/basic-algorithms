@@ -1,42 +1,24 @@
 #include<stdio.h>
-int main(){
 
-    int arr[5];
-    int count_of_runs = 0;
-    int swap_count = 0;
-    printf("Enter 5 elements: \n");
-    //takes input
-    for(int i = 0; i < 5; i++) {
-        printf("Element %d: ", i + 1);
-        scanf("%d", &arr[i]);
-    }
-
-    printf("Elements in the array are: ");
-    for (int i = 0; i < 5; i++) {
-        printf("%d ", arr[i]);
-    }
-
-    //bubble sort
-    for(int i = 0; i < 4; ++i) {
-        for(int j = 0; j < 4 - i; ++j) {
-            count_of_runs++;
-            if(arr[j] > arr[j + 1]) {
-                int ph = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = ph;
-                swap_count++;
+int bubbleSort(int arr[], int n){
+    for(int i = 0; i < n-1; i++){
+        for(int j = 0; j < n - i - 1; j++){
+            if(arr[j] > arr[j + 1]){
+                int temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j + 1] = temp;
             }
-
         }
     }
 
-    printf("Sorted Elements: ");
-
-    for (int i = 0; i < 5; i++) {
-        printf("%d ", arr[i]);
-    }
-
-    printf("\nNumber of passes: %d\n", count_of_runs);
-    printf("number of swaps: %d\n", swap_count);
 }
 
+int main(){
+    int arr[] = {45, 24, 12, 14, 26, 78};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    bubbleSort(arr, n);
+    printf("Sorted array: ");
+    for(int i = 0; i < n; i++){
+        printf("%d, ", arr[i]);
+    }
+}
